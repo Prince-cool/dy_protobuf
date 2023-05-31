@@ -2784,7 +2784,8 @@ function base64ToUint8Array(base64String) {
         .replace(/\-/g, '+')
         .replace(/_/g, '/');
 
-    let rawData = atob(base64);
+    // let rawData = atob(base64);
+    let rawData = new Buffer.from(base64, "base64").toString("binary")
     let outputArray = new Uint8Array(rawData.length);
 
     for (var i = 0; i < rawData.length; ++i) {
